@@ -112,6 +112,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/rep/lisp/*/*.jlc
 %{_datadir}/rep/lisp/*/*/*.jlc
 %{_datadir}/rep/lisp/*/*/*/*.jlc
+%{_datadir}/rep/lisp/*/*/*/*/*.jlc
 %dir %{_libexecdir}/rep
 %dir %{_libexecdir}/rep/%{_host}
 %dir %{_libexecdir}/rep/%{_host}/rep
