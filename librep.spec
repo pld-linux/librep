@@ -6,8 +6,6 @@ Release:	3
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
-Group(de):	Entwicklung/Sprachen
-Group(pl):	Programowanie/Jêzyki
 Source0:	http://download.sourceforge.net/librep/%{name}-%{version}.tar.gz
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-no_version.patch
@@ -44,8 +42,6 @@ cechami Common Lispa.
 Summary:	librep include files and link libraries
 Summary(pl):	Pliki nag³ówkowe do librep
 Group:		Development/Languages
-Group(de):	Entwicklung/Sprachen
-Group(pl):	Programowanie/Jêzyki
 Requires:	%{name} = %{version}
 Requires:	gmp-devel >= 3.1.1
 Obsoletes:	librep-jl
@@ -62,8 +58,6 @@ librep.
 Summary:	librep static libraries
 Summary(pl):	Biblioteki statyczne librep
 Group:		Development/Languages
-Group(de):	Entwicklung/Sprachen
-Group(pl):	Programowanie/Jêzyki
 Requires:	%{name}-devel = %{version}
 
 %description static
