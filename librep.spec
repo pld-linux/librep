@@ -1,13 +1,13 @@
 Summary:	Embeddable Lisp environment
 Name:		librep
-Version:	0.13.6
-Release:	3
+Version:	0.14
+Release:	1
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
 Group(de):	Entwicklung/Sprachen
 Group(pl):	Programowanie/Jêzyki
-Source0:	ftp://librep.sourceforge.net/pub/librep/%{name}-%{version}.tar.gz
+Source0:	http://download.sourceforge.net/librep/%{name}-%{version}.tar.gz
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-no_version.patch
 URL:		http://librep.sourceforge.net/
