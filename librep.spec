@@ -1,4 +1,4 @@
-%define	dsnap	2002-05-02
+%define	dsnap	2002-05-24
 %define	snap	%(echo %{dsnap} | sed -e "s#-##g")
 Summary:	Embeddable Lisp environment
 Summary(pl):	¦rodowisko do zagnie¿d¿ania Lispa
@@ -137,13 +137,34 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/rep/lisp/*/*/*/*/*.jlc
 %dir %{_libexecdir}/rep
 %dir %{_libexecdir}/rep/%{_host}
-%dir %{_libexecdir}/rep/%{_host}/rep
-%dir %{_libexecdir}/rep/%{_host}/rep/*
 %{_libexecdir}/rep/%{_host}/DOC
-%attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/*/*.so
-%attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/*/*.la
-%attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/*/*/*.so
-%attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/*/*/*.la
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/emulate-gnu-tar
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/*.so
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/*.la
+%dir %{_libexecdir}/rep/%{_host}/rep
+%dir %{_libexecdir}/rep/%{_host}/rep/data
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/data/*.so
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/data/*.la
+%dir %{_libexecdir}/rep/%{_host}/rep/i18n
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/i18n/*.so
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/i18n/*.la
+%dir %{_libexecdir}/rep/%{_host}/rep/io
+%dir %{_libexecdir}/rep/%{_host}/rep/io/db
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/io/db/*.so
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/io/db/*.la
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/io/*.so
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/io/*.la
+%dir %{_libexecdir}/rep/%{_host}/rep/lang
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/lang/*.so
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/lang/*.la
+%dir %{_libexecdir}/rep/%{_host}/rep/util
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/util/*.so
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/util/*.la
+%dir %{_libexecdir}/rep/%{_host}/rep/vm
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/vm/*.so
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/vm/*.la
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/*.so
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/*.la
 
 %files devel
 %defattr(644,root,root,755)
@@ -155,6 +176,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libexecdir}/rep/%{_host}/libtool
 %attr(755,root,root) %{_libexecdir}/rep/%{_host}/install-aliases
 %{_libexecdir}/rep/%{_host}/rules.mk
+%{_libexecdir}/rep/%{_host}/rep_config.h
 %{_aclocaldir}/rep.m4
 %{_infodir}/librep*
 %{_datadir}/rep/lisp/*.jl
