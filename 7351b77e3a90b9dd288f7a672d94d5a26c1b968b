@@ -1,0 +1,2 @@
+- release 3,
+- added missing %%{_libexecdir}/rep/%%{_host}/install-aliases to devel.
