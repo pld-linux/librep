@@ -1,14 +1,17 @@
+%define	dsnap	2002-04-19
+%define	snap	%(echo %{dsnap} | sed -e "s#-##g")
 Summary:	Embeddable Lisp environment
 Summary(pl):	¦rodowisko do zagnie¿d¿ania Lispa
 Name:		librep
-Version:	0.15.2
-Release:	3
+Version:	0.15.2.%{snap}
+Release:	1
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
-Source0:	http://download.sourceforge.net/librep/%{name}-%{version}.tar.gz
+Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/librep/%{name}-%{dsnap}.tar.bz2
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-no_version.patch
+Patch2:		%{name}-am_ac.patch
 URL:		http://librep.sourceforge.net/
 BuildRequires:	autoconf >= 2.3-12
 BuildRequires:	gdbm-devel
@@ -67,18 +70,22 @@ Librep static libraries.
 Biblioteki statyczne librep.
 
 %prep
-%setup -q
+%setup -q -n %{name}-%{dsnap}
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
+aclocal
 autoconf
 %configure \
+	--with-readline \
 	--enable-static
 %{__make} host_type=%{_host}
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	aclocaldir=%{_aclocaldir} \
