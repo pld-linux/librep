@@ -2,7 +2,7 @@ Summary:	Embeddable Lisp environment
 Summary(pl):	¦rodowisko do zagnie¿d¿ania Lispa
 Name:		librep
 Version:	0.15.2
-Release:	2
+Release:	3
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
@@ -81,13 +81,14 @@ Biblioteki statyczne librep.
 autoconf
 %configure \
 	--enable-static
-%{__make}
+%{__make} host_type=%{_host}
 
 %install
 rm -rf $RPM_BUILD_ROOT
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
-	aclocaldir=%{_aclocaldir}
+	aclocaldir=%{_aclocaldir} \
+	host_type=%{_host}
 
 install src/rep_config.h $RPM_BUILD_ROOT%{_includedir}
 
