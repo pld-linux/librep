@@ -50,7 +50,7 @@ los recursos de elisp al mismo tiempo en que intenta eliminar algunas
 de sus deficiencias, con recursos de Common LISP.
 
 %description -l pl
-To jest niewielkie ¶rodowisko LISP dla uniksa. Zawiera interpreter
+To jest niewielkie ¶rodowisko LISP dla Uniksa. Zawiera interpreter
 LISP-a, kompilator bytecodu i maszynê wirtualn±. Aplikacje mog± u¿ywaæ
 interpretera LISP-a jako rozszerzenia jêzyka lub w oddzielnych
 skryptach.
