@@ -24,6 +24,7 @@ BuildRequires:	gdbm-devel
 BuildRequires:	gmp-devel >= 4.1-3
 BuildRequires:	libffi-devel
 BuildRequires:	readline-devel >= 4.2
+BuildRequires:	texinfo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %define		_libexecdir	%{_libdir}
