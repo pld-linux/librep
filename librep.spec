@@ -1,7 +1,7 @@
 Summary:	Embeddable Lisp environment
 Name:		librep
 Version:	0.14
-Release:	2
+Release:	3
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
@@ -36,6 +36,7 @@ Group:		Development/Languages
 Group(de):	Entwicklung/Sprachen
 Group(pl):	Programowanie/Jêzyki
 Requires:	%{name} = %{version}
+Requires:	gmp-devel >= 3.1.1
 Obsoletes:	librep-jl
 
 %description devel
