@@ -1,7 +1,7 @@
 Summary:	Embeddable Lisp environment
 Name:		librep
 Version:	0.13.6
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
@@ -16,6 +16,8 @@ BuildRequires:	gdbm-devel
 BuildRequires:	gmp-devel
 BuildRequires:	readline-devel >= 4.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
+
+%define		_libexecdir	%{_libdir}
 
 %description
 This is a lightweight LISP environment for UNIX. It contains a LISP
