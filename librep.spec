@@ -207,9 +207,9 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libexecdir}/rep/%{_host}/rep/io/db
 %{_libexecdir}/rep/%{_host}/DOC
 %attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/*/*.so
-%attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/*/*.la
+%{_libexecdir}/rep/%{_host}/rep/*/*.la
 %attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/*/*/*.so
-%attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/*/*/*.la
+%{_libexecdir}/rep/%{_host}/rep/*/*/*.la
 
 %files devel
 %defattr(644,root,root,755)
