@@ -200,6 +200,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libexecdir}/rep/%{_host}
 %{_libexecdir}/rep/%{_host}/doc-strings
 %{_libexecdir}/rep/%{_host}/*.la
+%dir %{_libexecdir}/rep/%{_host}/rep
 %dir %{_libexecdir}/rep/%{_host}/rep/data
 %dir %{_libexecdir}/rep/%{_host}/rep/i18n
 %dir %{_libexecdir}/rep/%{_host}/rep/io
