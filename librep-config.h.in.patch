@@ -1,0 +1,11 @@
+--- librep-0.14/config.h.in~	Fri Jun 15 06:39:43 2001
++++ librep-0.14/config.h.in	Fri Aug 10 19:46:48 2001
+@@ -133,7 +133,7 @@
+ #undef TIME_WITH_SYS_TIME
+ 
+ /* Define if <memory.h> exists */
+-#undef HAVE_MEMORY_H */
++#undef HAVE_MEMORY_H
+ #ifdef HAVE_MEMORY_H
+ # define NEED_MEMORY_H		/* backwards compatibility */
+ #endif
