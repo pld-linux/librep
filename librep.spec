@@ -1,8 +1,12 @@
 Summary:	Embeddable Lisp environment
+Summary(es):	Ambiente LISP que se puede incluir
 Summary(pl):	╕rodowisko do zagnie©d©ania Lispa
+Summary(pt_BR):	Ambiente LISP embutМvel
+Summary(ru):	Встраиваемая среда LISP
+Summary(uk):	Вбудовуване середовище LISP
 Name:		librep
 Version:	0.15.2
-Release:	3
+Release:	4
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
@@ -28,6 +32,17 @@ Originally inspired by Emacs Lisp, the language dialect combines many
 of the elisp features while trying to remove some of the main
 deficiencies, with features from Common Lisp.
 
+%description -l es
+Este es un ambiente LISP (sencillo, ocupa poca memoria y rАpido) para
+UNIX. Este paquete contiene un interpretador LISP, compilador de
+byte-code y una mАquinavirtual. Las aplicaciones pueden usar el
+interpretador LISP como un lenguaje deextensiСn, o el interpretador
+puede usarse para scripts separados.
+
+Instalado originalmente en Emacs LISP, este dialecto combina muchos de
+los recursos de elisp al mismo tiempo en que intenta eliminar algunas
+de sus deficiencias, con recursos de Common LISP.
+
 %description -l pl
 To jest niewielkie ╤rodowisko LISP dla uniksa. Zawiera interpreter
 LISP-a, kompilator bytecodu i maszynЙ wirtualn╠. Aplikacje mog╠ u©ywaФ
@@ -38,9 +53,39 @@ Oryginalnie zainspirowany przez Emacs Lisp, ten dialekt jЙzyka Ё╠czy
 wiele cech elispa, prСbuj╠c usun╠Ф niektСre z gЁСwnych utrudnieЯ, z
 cechami Common Lispa.
 
+%description -l pt_BR
+Esse И um ambiente LISP leve para UNIX. Esse pacote contИm um
+interpretador LISP, compilador de byte-code e uma mАquina virtual.
+AplicaГУes podem usar o interpretador LISP como uma linguagem de
+extensЦo, ou o interpretador pode ser usado para scripts isolados.
+
+Originalmente inspirado pelo Emacs LISP, esse dialeto combina muitos
+dos recursos do elisp ao mesmo tempo em que tenta remover algumas de
+suas deficiЙncias, com recursos do Common LISP.
+
+%description -l ru
+Librep - это диалект языка LISP для использования встроенным в другие
+приложения или отдельно. Librep в большой степени (хотя и не
+полностью) совместим с Emacs LISP. Librep содержит интерпретатор LISP,
+байт-кодовый компилятор и виртуальную машину. Приложения могут
+использвать интерпретатор LISP как язык расширения или для запуска
+самостоятельных сценариев.
+
+%description -l uk
+Librep - це д╕алект мови LISP для використання вбудованим в ╕нш╕
+прикладн╕ програми чи окремо. Librep великою м╕рою (хоча й не
+повн╕стю) сум╕сний з Emacs LISP. Librep м╕стить ╕нтерпретатор LISP,
+байт-кодовий комп╕лятор та в╕ртуальну машину. Програми можуть
+використовувати ╕нтерпретатор LISP як мову розширення чи для запуску
+в╕докремлених сценар╕╖в.
+
 %package devel
 Summary:	librep include files and link libraries
+Summary(es):	Archivos de cabezamiento y bibliotecas para librep
 Summary(pl):	Pliki nagЁСwkowe do librep
+Summary(pt_BR):	Arquivos de cabeГalho e bibliotecas para o librep
+Summary(ru):	Файлы для разработки программ, использующих librep
+Summary(uk):	Файли для розробки програм з використанням librep
 Group:		Development/Languages
 Requires:	%{name} = %{version}
 Requires:	gmp-devel >= 3.1.1
@@ -50,13 +95,31 @@ Obsoletes:	librep-jl
 Link libraries and C header and Lisp source files for librep
 development.
 
+%description devel -l es
+Bibliotecas para enlace y archivos de encabezamiento para desarrollo
+con librep.
+
 %description devel -l pl
 Pliki nagЁСwkowe i ╪rСdЁa Lispa do tworzenia programСw z u©yciem
 librep.
 
+%description devel -l pt_BR
+Bibliotecas para ligaГЦo e arquivos de cabeГalho para desenvolvimento
+com librep.
+
+%description devel -l ru
+Файлы для разработки программ с использованием librep. Librep - это
+встраиваемый диалект LISP.
+
+%description devel -l uk
+Файли для розробки програм з використанням librep. Librep - це
+вбудовуваний д╕алект LISP.
+
 %package static
 Summary:	librep static libraries
 Summary(pl):	Biblioteki statyczne librep
+Summary(ru):	Статические библиотеки librep
+Summary(uk):	Статичн╕ б╕бл╕отеки librep
 Group:		Development/Languages
 Requires:	%{name}-devel = %{version}
 
@@ -65,6 +128,14 @@ Librep static libraries.
 
 %description static -l pl
 Biblioteki statyczne librep.
+
+%description static -l ru
+Статические библиотеки для разработки программ с использованием
+librep. Librep - это встраиваемый диалект LISP.
+
+%description static -l uk
+Статичн╕ б╕бл╕отеки для розробки програм з використанням librep.
+Librep - це вбудовуваний д╕алект LISP.
 
 %prep
 %setup -q
@@ -79,6 +150,7 @@ autoconf
 
 %install
 rm -rf $RPM_BUILD_ROOT
+
 %{__make} install \
 	DESTDIR=$RPM_BUILD_ROOT \
 	aclocaldir=%{_aclocaldir} \
