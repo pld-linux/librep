@@ -6,7 +6,7 @@ Summary(ru):	Встраиваемая среда LISP
 Summary(uk):	Вбудовуване середовище LISP
 Name:		librep
 Version:	0.15.2
-Release:	5
+Release:	6
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
@@ -16,7 +16,7 @@ Patch1:		%{name}-no_version.patch
 URL:		http://librep.sourceforge.net/
 BuildRequires:	autoconf >= 2.3-12
 BuildRequires:	gdbm-devel
-BuildRequires:	gmp-devel >= 3.1.1
+BuildRequires:	gmp-devel >= 4.1-3
 BuildRequires:	readline-devel >= 4.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -88,7 +88,7 @@ Summary(ru):	Файлы для разработки программ, использующих librep
 Summary(uk):	Файли для розробки програм з використанням librep
 Group:		Development/Languages
 Requires:	%{name} = %{version}
-Requires:	gmp-devel >= 3.1.1
+Requires:	gmp-devel >= 4.1-3
 Obsoletes:	librep-jl
 
 %description devel
