@@ -6,7 +6,7 @@ Summary(ru):	Встраиваемая среда LISP
 Summary(uk):	Вбудовуване середовище LISP
 Name:		librep
 Version:	0.16.1
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
