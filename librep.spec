@@ -1,7 +1,8 @@
 Summary:	Embeddable Lisp environment
 Name:		librep
 Version:	0.13.3
-Release:	1
+Release:	2
+Epoch:		1
 License:	GPL
 Group:		Development/Languages
 Group(de):	Entwicklung/Sprachen
