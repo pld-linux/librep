@@ -1,7 +1,8 @@
 Summary:	Embeddable Lisp environment
+Summary(pl):	¦rodowisko do zagnie¿d¿ania Lispa
 Name:		librep
 Version:	0.15.2
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
@@ -29,8 +30,19 @@ Originally inspired by Emacs Lisp, the language dialect combines many
 of the elisp features while trying to remove some of the main
 deficiencies, with features from Common Lisp.
 
+%description -l pl
+To jest niewielkie ¶rodowisko LISP dla uniksa. Zawiera interpreter
+LISP-a, kompilator bytecodu i maszynê wirtualn±. Aplikacje mog± u¿ywaæ
+interpretera LISP-a jako rozszerzenia jêzyka lub w oddzielnych
+skryptach.
+
+Oryginalnie zainspirowany przez Emacs Lisp, ten dialekt jêzyka ³±czy
+wiele cech elispa, próbuj±c usun±æ niektóre z g³ównych utrudnieñ, z
+cechami Common Lispa.
+
 %package devel
 Summary:	librep include files and link libraries
+Summary(pl):	Pliki nag³ówkowe do librep
 Group:		Development/Languages
 Group(de):	Entwicklung/Sprachen
 Group(pl):	Programowanie/Jêzyki
@@ -42,8 +54,13 @@ Obsoletes:	librep-jl
 Link libraries and C header and Lisp source files for librep
 development.
 
+%description devel -l pl
+Pliki nag³ówkowe i ¼ród³a Lispa do tworzenia programów z u¿yciem
+librep.
+
 %package static
 Summary:	librep static libraries
+Summary(pl):	Biblioteki statyczne librep
 Group:		Development/Languages
 Group(de):	Entwicklung/Sprachen
 Group(pl):	Programowanie/Jêzyki
@@ -51,6 +68,9 @@ Requires:	%{name}-devel = %{version}
 
 %description static
 Librep static libraries.
+
+%description static -l pl
+Biblioteki statyczne librep.
 
 %prep
 %setup -q
