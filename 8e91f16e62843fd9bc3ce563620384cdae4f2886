@@ -1,0 +1,4 @@
+- release 2,
+- added missing readline-devel to BuildRequires,
+- rebuild against readline 4.2.
+TODO: separate gdbm, readline modules into subpackages.
