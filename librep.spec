@@ -16,6 +16,7 @@ Patch0:		%{name}-info.patch
 Patch1:		%{name}-no_version.patch
 URL:		http://librep.sourceforge.net/
 BuildRequires:	autoconf >= 2.3-12
+BuildRequires:	automake
 BuildRequires:	gdbm-devel
 BuildRequires:	gmp-devel >= 4.1-3
 BuildRequires:	readline-devel >= 4.2
@@ -147,7 +148,8 @@ Librep - це вбудовуваний д╕алект LISP.
 %{__autoconf}
 %configure \
 	--enable-static
-%{__make} host_type=%{_host}
+%{__make} \
+	host_type=%{_host}
 
 %install
 rm -rf $RPM_BUILD_ROOT
