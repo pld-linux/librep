@@ -91,7 +91,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/rep/%{version}/lisp
 %{_datadir}/rep/%{version}/lisp/*.jlc
 %{_datadir}/rep/%{version}/DOC.*
-%{_libexecdir}/rep/%{version}/%{_host}/lib*.so
+%{_libexecdir}/rep/%{version}/%{_host}/lib*.so*
 %{_libexecdir}/rep/%{version}/%{_host}/lib*.la
 
 %files jl
