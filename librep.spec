@@ -1,14 +1,16 @@
 Summary:	Embeddable Lisp environment
 Name:		librep
 Version:	0.13
-Release:	2
+Release:	3
 License:	GPL
 Group:		Development/Languages
 Group(de):	Entwicklung/Sprachen
 Group(pl):	Programowanie/Jêzyki
 Source0:	ftp://download.sourceforge.net/pub/sourceforge/librep/%{name}-%{version}.tar.gz
 Patch0:		%{name}-info.patch
+Patch1:		%{name}-no_version.patch
 URL:		http://www.dcs.warwick.ac.uk/~john/sw/librep.html
+BuildRequires:	autoconf
 BuildRequires:	gdbm-devel
 BuildRequires:	gmp-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -55,9 +57,11 @@ Librep static libraries.
 
 %prep
 %setup -q
-%patch -p1
+%patch0 -p1
+%patch1 -p1
 
 %build
+autoconf
 %configure \
 	--enable-static
 %{__make}
@@ -71,7 +75,7 @@ rm -rf $RPM_BUILD_ROOT
 install src/rep_config.h $RPM_BUILD_ROOT%{_includedir}
 
 strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.* \
-	$RPM_BUILD_ROOT%{_libexecdir}/rep/%{version}/%{_host}/*.so
+	$RPM_BUILD_ROOT%{_libexecdir}/rep/%{_host}/rep/*/*.so
 
 gzip -9nf $RPM_BUILD_ROOT%{_infodir}/librep* \
 	NEWS README TODO
@@ -96,19 +100,38 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/repdoc
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %dir %{_datadir}/rep
-%dir %{_datadir}/rep/%{version}
-%dir %{_datadir}/rep/%{version}/lisp
-%{_datadir}/rep/%{version}/lisp/*.jlc
+%dir %{_datadir}/rep/lisp
+%dir %{_datadir}/rep/lisp/scheme
+%dir %{_datadir}/rep/lisp/unscheme
+%dir %{_datadir}/rep/lisp/rep/data
+%dir %{_datadir}/rep/lisp/rep/i18n
+%dir %{_datadir}/rep/lisp/rep/io
+%dir %{_datadir}/rep/lisp/rep/io/file-handlers
+%dir %{_datadir}/rep/lisp/rep/lang
+%dir %{_datadir}/rep/lisp/rep/mail
+%dir %{_datadir}/rep/lisp/rep/net
+%dir %{_datadir}/rep/lisp/rep/system
+%dir %{_datadir}/rep/lisp/rep/threads
+%dir %{_datadir}/rep/lisp/rep/util
+%dir %{_datadir}/rep/lisp/rep/vm
+%dir %{_datadir}/rep/lisp/rep/vm/compiler
+%dir %{_datadir}/rep/lisp/rep/www
+%{_datadir}/rep/lisp/*.jlc
+%{_datadir}/rep/lisp/*/*.jlc
+%{_datadir}/rep/lisp/*/*/*.jlc
 %dir %{_libexecdir}/rep
-%dir %{_libexecdir}/rep/%{version}
-%dir %{_libexecdir}/rep/%{version}/%{_host}
-%{_libexecdir}/rep/%{version}/%{_host}/DOC
-%attr(755,root,root) %{_libexecdir}/rep/%{version}/%{_host}/*.so
-%attr(755,root,root) %{_libexecdir}/rep/%{version}/%{_host}/*.la
+%dir %{_libexecdir}/rep/%{_host}
+%dir %{_libexecdir}/rep/%{_host}/rep
+%dir %{_libexecdir}/rep/%{_host}/rep/*
+%{_libexecdir}/rep/%{_host}/DOC
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/*/*.so
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/*/*.la
 
 %files jl
 %defattr(644,root,root,755)
-%{_datadir}/rep/%{version}/lisp/*.jl
+%{_datadir}/rep/lisp/*.jl
+%{_datadir}/rep/lisp/*/*.jl
+%{_datadir}/rep/lisp/*/*/*.jl
 
 %files devel
 %defattr(644,root,root,755)
@@ -126,4 +149,4 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
-%{_libexecdir}/rep/%{version}/%{_host}/*.a
+%{_libexecdir}/rep/%{_host}/rep/*/*.a
