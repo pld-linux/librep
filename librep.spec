@@ -88,7 +88,7 @@ Summary(pt_BR):	Arquivos de cabeГalho e bibliotecas para o librep
 Summary(ru):	Файлы для разработки программ, использующих librep
 Summary(uk):	Файли для розробки програм з використанням librep
 Group:		Development/Languages
-Requires:	%{name} = %{version}
+Requires:	%{name} = %{epoch}:%{version}
 Requires:	gmp-devel >= 4.1-3
 Obsoletes:	librep-jl
 
@@ -122,7 +122,7 @@ Summary(pl):	Biblioteki statyczne librep
 Summary(ru):	Статические библиотеки librep
 Summary(uk):	Статичн╕ б╕бл╕отеки librep
 Group:		Development/Languages
-Requires:	%{name}-devel = %{version}
+Requires:	%{name}-devel = %{epoch}:%{version}
 
 %description static
 Librep static libraries.
