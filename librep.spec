@@ -1,4 +1,4 @@
-%define	dsnap	2002-05-24
+%define	dsnap	2002-06-11
 %define	snap	%(echo %{dsnap} | sed -e "s#-##g")
 Summary:	Embeddable Lisp environment
 Summary(pl):	¦rodowisko do zagnie¿d¿ania Lispa
