@@ -1,7 +1,7 @@
 Summary:	Embeddable Lisp environment
 Name:		librep
 Version:	0.13.1
-Release:	2
+Release:	3
 License:	GPL
 Group:		Development/Languages
 Group(de):	Entwicklung/Sprachen
@@ -140,6 +140,7 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libdir}/lib*.la
 %{_includedir}/*
 %attr(755,root,root) %{_libexecdir}/rep/%{_host}/libtool
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/install-aliases
 %{_libexecdir}/rep/%{_host}/rules.mk
 %{_aclocaldir}/rep.m4
 %{_infodir}/librep*
