@@ -1,12 +1,12 @@
 Summary:	Embeddable Lisp environment
 Name:		librep
 Version:	0.11.3
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Languages
 Group(pl):	Programowanie/Jêzyki
-Source:		ftp://ftp.dcs.warwick.ac.uk/people/John.Harper/librep/%{name}-%{version}.tar.gz
-Patch:		librep-info.patch
+Source0:	ftp://ftp.dcs.warwick.ac.uk/people/John.Harper/librep/%{name}-%{version}.tar.gz
+Patch0:		librep-info.patch
 URL:		http://www.dcs.warwick.ac.uk/~john/sw/librep.html
 BuildRequires:	gdbm-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -17,9 +17,9 @@ interpreter, byte-code compiler and virtual machine. Applications may use
 the LISP interpreter as an extension language, or it may be used for
 standalone scripts.
 
-Originally inspired by Emacs Lisp, the language dialect combines many of the
-elisp features while trying to remove some of the main deficiencies, with
-features from Common Lisp.
+Originally inspired by Emacs Lisp, the language dialect combines many of
+the elisp features while trying to remove some of the main deficiencies,
+with features from Common Lisp.
 
 %package jl
 Summary:	*.jl Lisp source files
@@ -28,7 +28,7 @@ Group(pl):	Programowanie/Jêzyki
 Requires:	%{name} = %{version}
 
 %description jl
-*.jl Lisp source files.
+Lisp source files.
 
 %package devel
 Summary:	librep include files and link libraries
