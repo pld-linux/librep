@@ -1,82 +1,118 @@
-
-%define nam	librep
-%define ver	0.7.1
-%define rel	1
-
-Summary: embeddable Lisp environment
-Name: %{nam}
-Version: %{ver}
-Release: %{rel}
-Copyright: GPL
-Group: Development/Languages
-Source: ftp.dcs.warwick.ac.uk:/people/John.Harper/librep/librep-%{ver}.tar.gz
-URL: http://www.dcs.warwick.ac.uk/~john/sw/librep.html
-Packager: John Harper <john@dcs.warwick.ac.uk>
-Buildroot: /var/tmp/%{nam}-root
+Summary:	Embeddable Lisp environment
+Name:		librep
+Version:	0.10
+Release:	1
+License:	GPL
+Group:		Development/Languages
+Group(pl):	Programowanie/Jêzyki
+Source:		ftp://ftp.dcs.warwick.ac.uk/people/John.Harper/librep/%{name}-%{version}.tar.gz
+Patch:		librep-info.patch
+URL:		http://www.dcs.warwick.ac.uk/~john/sw/librep.html
+Buildroot:	/tmp/%{name}-%{version}-root
 
 %description
-This is an Emacs Lisp-like runtime library for UNIX. It contains a LISP
-interpreter, byte-code compiler and virtual machine. Applications may
-use the LISP interpreter as an extension language, or it may be used
-for standalone scripts.
+This is a lightweight LISP environment for UNIX. It contains a LISP
+interpreter, byte-code compiler and virtual machine. Applications may use
+the LISP interpreter as an extension language, or it may be used for
+standalone scripts.
+
+Originally inspired by Emacs Lisp, the language dialect combines many of the
+elisp features while trying to remove some of the main deficiencies, with
+features from Common Lisp.
+
+%package jl
+Summary:	*.jl Lisp source files
+Group:		Development/Languages
+Group(pl):	Programowanie/Jêzyki
+Requires:	%{name} = %{version}
+
+%description jl
+*.jl Lisp source files.
 
 %package devel
-Summary: librep include files and link libraries
-Group: Development/Languages
-Requires: %{nam}
+Summary:	librep include files and link libraries
+Group:		Development/Languages
+Group(pl):	Programowanie/Jêzyki
+Prereq:		/usr/sbin/fix-info-dir
+Requires:	%{name} = %{version}
 
 %description devel
 Link libraries and C header files for librep development.
 
+%package static
+Summary:	librep static libraries
+Group:		Development/Languages
+Group(pl):	Programowanie/Jêzyki
+Requires:	%{name}-devel = %{version}
+
+%description static
+Librep static libraries.
+
 %prep
-%setup
+%setup -q
+%patch -p1
 
 %build
-./configure --prefix %{_prefix} %{_host}
-make CFLAGS="$RPM_OPT_FLAGS"
+LDFLAGS="-s"; export LDFLAGS
+%configure
+make
 
 %install
 rm -rf $RPM_BUILD_ROOT
-make install \
-    prefix=$RPM_BUILD_ROOT%{_prefix} \
-    aclocaldir=$RPM_BUILD_ROOT%{_prefix}/share/aclocal
-gzip -9nf $RPM_BUILD_ROOT%{_prefix}/info/librep*
+make install DESTDIR=$RPM_BUILD_ROOT
+
+strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.* \
+	$RPM_BUILD_ROOT%%{_libexecdir}/rep/%{version}/%{_host}/lib*.so
+
+gzip -9nf $RPM_BUILD_ROOT%{_infodir}/librep* \
+	NEWS README etc/TODO
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
+%post   -p /sbin/ldconfig
+%postun -p /sbin/ldconfig
+
+%post devel
+/usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
+
+%postun devel
+/usr/sbin/fix-info-dir -c %{_infodir} >/dev/null 2>&1
+
 %files
-%doc NEWS README etc/TODO
-%{_prefix}/bin/rep
-%{_prefix}/bin/rep-remote
-%{_prefix}/lib/librep.so.*
-%{_prefix}/share/rep/%{ver}/lisp/*.jl
-%{_prefix}/share/rep/%{ver}/lisp/*.jlc
-%{_prefix}/share/rep/%{ver}/DOC.*
-%{_prefix}/libexec/rep/%{ver}/%{_host}/lib*.so*
-%{_prefix}/libexec/rep/%{ver}/%{_host}/lib*.la
-%{_prefix}/info/librep*
+%defattr(644,root,root,755)
+%attr(755,root,root) %{_bindir}/rep
+%attr(755,root,root) %{_bindir}/rep-remote
+%attr(755,root,root) %{_bindir}/rep-xgettext
+%attr(755,root,root) %{_bindir}/repdoc
+%attr(755,root,root) %{_libdir}/lib*.so.*.*
+%dir %{_datadir}/rep
+%dir %{_datadir}/rep/%{version}
+%dir %{_datadir}/rep/%{version}/lisp
+%{_datadir}/rep/%{version}/lisp/*.jlc
+%{_datadir}/rep/%{version}/DOC.*
+%{_libexecdir}/rep/%{version}/%{_host}/lib*.so
+%{_libexecdir}/rep/%{version}/%{_host}/lib*.la
+
+%files jl
+%defattr(644,root,root,755)
+%{_datadir}/rep/%{version}/lisp/*.jl
 
 %files devel
-%{_prefix}/bin/rep-config
-%{_prefix}/bin/repdoc
-%{_prefix}/lib/librep.a
-%{_prefix}/lib/librep.so
-%{_prefix}/include/rep.h
-%{_prefix}/include/rep_*.h
-%{_prefix}/libexec/rep/%{_host}/libtool
-%{_prefix}/libexec/rep/%{_host}/rules.mk
-%{_prefix}/share/aclocal/rep.m4
+%defattr(644,root,root,755)
+%doc *.gz etc/TODO.gz
+%attr(755,root,root) %{_bindir}/rep-config
+%attr(755,root,root) %{_bindir}/repdoc
+%attr(755,root,root) %{_libdir}/lib*.so
+%attr(755,root,root) %{_libdir}/lib*.la
+%{_includedir}/rep.h
+%{_includedir}/rep_*.h
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/libtool
+%{_libexecdir}/rep/%{_host}/rules.mk
+%{_datadir}/aclocal/rep.m4
+%{_infodir}/librep*
 
-%post
-ldconfig
-
-%postun
-ldconfig
-
-%changelog
-Revision 1.2  2000/01/21 16:01:32  kloczek
-- 0.5 spec file update: added buildroot
-
-* Mon Sep 13 1999 Aron Griffis <agriffis@bigfoot.com>
-- 0.5 spec file update: added buildroot
+%files static
+%defattr(644,root,root,755)
+%{_libdir}/lib*.a
+%{_libexecdir}/rep/%{version}/%{_host}/lib*.a
