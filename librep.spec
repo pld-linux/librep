@@ -54,7 +54,8 @@ Librep static libraries.
 
 %build
 LDFLAGS="-s"; export LDFLAGS
-%configure
+%configure \
+	--enable-static
 make
 
 %install
