@@ -1,0 +1,11 @@
+diff -urN librep-2002-04-19.org/configure.in librep-2002-04-19/configure.in
+--- librep-2002-04-19.org/configure.in	Mon Apr 29 01:03:06 2002
++++ librep-2002-04-19/configure.in	Mon Apr 29 01:03:42 2002
+@@ -542,7 +542,6 @@
+ AC_SUBST(emacssitelispdir)
+ AC_SUBST(HAVE_UNIX)
+ AC_SUBST(HAVE_X11)
+-AC_SUBST(LIBOBJS)
+ 
+ AC_DEFINE_UNQUOTED(rep_VERSION, "${version}")
+ AC_DEFINE_UNQUOTED(rep_INTERFACE, ${libcurrent})
