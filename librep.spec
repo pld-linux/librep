@@ -14,11 +14,14 @@ Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 # Source0-md5:	ad4ad851ff9f82a5d61024cd96bc2998
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-no_version.patch
+Patch2:		%{name}-longdouble.patch
+Patch3:		%{name}-config.patch
 URL:		http://librep.sourceforge.net/
 BuildRequires:	autoconf >= 2.3-12
 BuildRequires:	automake
 BuildRequires:	gdbm-devel
 BuildRequires:	gmp-devel >= 4.1-3
+BuildRequires:	libffi-devel
 BuildRequires:	readline-devel >= 4.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -143,6 +146,8 @@ Librep - це вбудовуваний д╕алект LISP.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
+%patch3 -p1
 
 %build
 cp -f /usr/share/automake/config.* .
@@ -160,7 +165,9 @@ rm -rf $RPM_BUILD_ROOT
 	aclocaldir=%{_aclocaldir} \
 	host_type=%{_host}
 
-install src/rep_config.h $RPM_BUILD_ROOT%{_includedir}
+# remove useless static plugins
+# *.la can be used to load plugins and may contain additional information
+rm -f $RPM_BUILD_ROOT%{_libexecdir}/rep/%{_host}/rep{,/*,/*/*}/*.a
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -183,33 +190,25 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/repdoc
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
 %dir %{_datadir}/rep
-%dir %{_datadir}/rep/lisp
-%dir %{_datadir}/rep/lisp/scheme
-%dir %{_datadir}/rep/lisp/unscheme
-%dir %{_datadir}/rep/lisp/rep/data
-%dir %{_datadir}/rep/lisp/rep/i18n
-%dir %{_datadir}/rep/lisp/rep/io
-%dir %{_datadir}/rep/lisp/rep/io/file-handlers
-%dir %{_datadir}/rep/lisp/rep/lang
-%dir %{_datadir}/rep/lisp/rep/mail
-%dir %{_datadir}/rep/lisp/rep/net
-%dir %{_datadir}/rep/lisp/rep/system
-%dir %{_datadir}/rep/lisp/rep/threads
-%dir %{_datadir}/rep/lisp/rep/util
-%dir %{_datadir}/rep/lisp/rep/vm
-%dir %{_datadir}/rep/lisp/rep/vm/compiler
-%dir %{_datadir}/rep/lisp/rep/www
-%{_datadir}/rep/lisp/*.jlc
-%{_datadir}/rep/lisp/*/*.jlc
-%{_datadir}/rep/lisp/*/*/*.jlc
-%{_datadir}/rep/lisp/*/*/*/*.jlc
-%{_datadir}/rep/lisp/*/*/*/*/*.jlc
+%{_datadir}/rep/lisp
+%exclude %{_datadir}/rep/lisp/*.jl
+%exclude %{_datadir}/rep/lisp/*/*.jl
+%exclude %{_datadir}/rep/lisp/*/*/*.jl
+%exclude %{_datadir}/rep/lisp/*/*/*/*.jl
+%exclude %{_datadir}/rep/lisp/*/*/*/*/*.jl
 %dir %{_libexecdir}/rep
 %dir %{_libexecdir}/rep/%{_host}
-%dir %{_libexecdir}/rep/%{_host}/rep
-%dir %{_libexecdir}/rep/%{_host}/rep/*
+%{_libexecdir}/rep/%{_host}/doc-strings
+%{_libexecdir}/rep/%{_host}/*.la
+%dir %{_libexecdir}/rep/%{_host}/rep/data
+%dir %{_libexecdir}/rep/%{_host}/rep/i18n
+%dir %{_libexecdir}/rep/%{_host}/rep/io
 %dir %{_libexecdir}/rep/%{_host}/rep/io/db
-%{_libexecdir}/rep/%{_host}/DOC
+%dir %{_libexecdir}/rep/%{_host}/rep/lang
+%dir %{_libexecdir}/rep/%{_host}/rep/util
+%dir %{_libexecdir}/rep/%{_host}/rep/vm
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/*.so
+%{_libexecdir}/rep/%{_host}/rep/*.la
 %attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/*/*.so
 %{_libexecdir}/rep/%{_host}/rep/*/*.la
 %attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/*/*/*.so
@@ -220,7 +219,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/rep-config
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
-%{_includedir}/*
+%{_includedir}/*.h
+%{_libexecdir}/rep/%{_host}/rep_config.h
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/emulate-gnu-tar
 %attr(755,root,root) %{_libexecdir}/rep/%{_host}/libtool
 %attr(755,root,root) %{_libexecdir}/rep/%{_host}/install-aliases
 %{_libexecdir}/rep/%{_host}/rules.mk
@@ -235,4 +236,3 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
-%{_libexecdir}/rep/%{_host}/rep/*/*.a
