@@ -1,6 +1,6 @@
 Summary:	Embeddable Lisp environment
 Name:		librep
-Version:	0.10
+Version:	0.11
 Release:	1
 License:	GPL
 Group:		Development/Languages
@@ -62,7 +62,7 @@ rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
 
 strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.* \
-	$RPM_BUILD_ROOT%{_libexecdir}/rep/%{version}/%{_host}/lib*.so
+	$RPM_BUILD_ROOT%{_libexecdir}/rep/%{version}/%{_host}/*.so
 
 gzip -9nf $RPM_BUILD_ROOT%{_infodir}/librep* \
 	NEWS README etc/TODO
@@ -90,9 +90,9 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/rep/%{version}
 %dir %{_datadir}/rep/%{version}/lisp
 %{_datadir}/rep/%{version}/lisp/*.jlc
-%{_datadir}/rep/%{version}/DOC.*
-%{_libexecdir}/rep/%{version}/%{_host}/lib*.so*
-%{_libexecdir}/rep/%{version}/%{_host}/lib*.la
+%{_datadir}/rep/%{version}/DOC
+%{_libexecdir}/rep/%{version}/%{_host}/*.so
+%{_libexecdir}/rep/%{version}/%{_host}/*.la
 
 %files jl
 %defattr(644,root,root,755)
@@ -115,4 +115,4 @@ rm -rf $RPM_BUILD_ROOT
 %files static
 %defattr(644,root,root,755)
 %{_libdir}/lib*.a
-%{_libexecdir}/rep/%{version}/%{_host}/lib*.a
+%{_libexecdir}/rep/%{version}/%{_host}/*.a
