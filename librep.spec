@@ -8,7 +8,7 @@ Group(pl):	Programowanie/Jêzyki
 Source:		ftp://ftp.dcs.warwick.ac.uk/people/John.Harper/librep/%{name}-%{version}.tar.gz
 Patch:		librep-info.patch
 URL:		http://www.dcs.warwick.ac.uk/~john/sw/librep.html
-Buildroot:	/tmp/%{name}-%{version}-root
+BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This is a lightweight LISP environment for UNIX. It contains a LISP
