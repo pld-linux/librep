@@ -1,7 +1,7 @@
 Summary:	Embeddable Lisp environment
 Name:		librep
 Version:	0.13.5
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
@@ -14,6 +14,7 @@ URL:		http://librep.sourceforge.net/
 BuildRequires:	autoconf >= 2.3-12
 BuildRequires:	gdbm-devel
 BuildRequires:	gmp-devel
+BuildRequires:	readline-devel >= 4.2
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
