@@ -13,13 +13,13 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
 This is a lightweight LISP environment for UNIX. It contains a LISP
-interpreter, byte-code compiler and virtual machine. Applications may use
-the LISP interpreter as an extension language, or it may be used for
-standalone scripts.
+interpreter, byte-code compiler and virtual machine. Applications may
+use the LISP interpreter as an extension language, or it may be used
+for standalone scripts.
 
-Originally inspired by Emacs Lisp, the language dialect combines many of
-the elisp features while trying to remove some of the main deficiencies,
-with features from Common Lisp.
+Originally inspired by Emacs Lisp, the language dialect combines many
+of the elisp features while trying to remove some of the main
+deficiencies, with features from Common Lisp.
 
 %package jl
 Summary:	*.jl Lisp source files
