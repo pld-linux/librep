@@ -5,13 +5,13 @@ Summary(pt_BR):	Ambiente LISP embutМvel
 Summary(ru):	Встраиваемая среда LISP
 Summary(uk):	Вбудовуване середовище LISP
 Name:		librep
-Version:	0.16.2
+Version:	0.17
 Release:	1
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
 Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	b0f219f9f3d51bc06ebb1bd1861b6e5c
+# Source0-md5:	ad4ad851ff9f82a5d61024cd96bc2998
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-no_version.patch
 URL:		http://librep.sourceforge.net/
