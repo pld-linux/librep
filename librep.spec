@@ -1,7 +1,7 @@
 Summary:	Embeddable Lisp environment
 Name:		librep
 Version:	0.13.2
-Release:	1
+Release:	2
 License:	GPL
 Group:		Development/Languages
 Group(de):	Entwicklung/Sprachen
@@ -10,7 +10,7 @@ Source0:	ftp://download.sourceforge.net/pub/sourceforge/librep/%{name}-%{version
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-no_version.patch
 URL:		http://www.dcs.warwick.ac.uk/~john/sw/librep.html
-BuildRequires:	autoconf
+BuildRequires:	autoconf >= 2.3-12
 BuildRequires:	gdbm-devel
 BuildRequires:	gmp-devel
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -115,6 +115,8 @@ rm -rf $RPM_BUILD_ROOT
 %{_libexecdir}/rep/%{_host}/DOC
 %attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/*/*.so
 %attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/*/*.la
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/*/*/*.so
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/*/*/*.la
 
 %files devel
 %defattr(644,root,root,755)
