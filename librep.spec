@@ -4,7 +4,7 @@ Summary:	Embeddable Lisp environment
 Summary(pl):	¦rodowisko do zagnie¿d¿ania Lispa
 Name:		librep
 Version:	0.16
-Release:	1
+Release:	2
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
