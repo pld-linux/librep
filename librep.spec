@@ -89,7 +89,7 @@ Summary(pt_BR):	Arquivos de cabeГalho e bibliotecas para o librep
 Summary(ru):	Файлы для разработки программ, использующих librep
 Summary(uk):	Файли для розробки програм з використанням librep
 Group:		Development/Languages
-Requires:	%{name} = %{epoch}:%{version}
+Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	gmp-devel >= 4.1-3
 Obsoletes:	librep-jl
 
@@ -123,7 +123,7 @@ Summary(pl):	Biblioteki statyczne librep
 Summary(ru):	Статические библиотеки librep
 Summary(uk):	Статичн╕ б╕бл╕отеки librep
 Group:		Development/Languages
-Requires:	%{name}-devel = %{epoch}:%{version}
+Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
 %description static
 Librep static libraries.
@@ -145,6 +145,7 @@ Librep - це вбудовуваний д╕алект LISP.
 %patch1 -p1
 
 %build
+cp -f /usr/share/automake/config.* .
 %{__autoconf}
 %configure \
 	--enable-static
