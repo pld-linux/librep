@@ -13,6 +13,7 @@ Group:		Development/Languages
 Source0:	http://download.sourceforge.net/librep/%{name}-%{version}.tar.gz
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-no_version.patch
+Patch2:		%{name}-LIBOBJS.patch
 URL:		http://librep.sourceforge.net/
 BuildRequires:	autoconf >= 2.3-12
 BuildRequires:	gdbm-devel
@@ -141,6 +142,7 @@ Librep - це вбудовуваний д╕алект LISP.
 %setup -q
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 %{__autoconf}
