@@ -143,7 +143,7 @@ Librep - це вбудовуваний д╕алект LISP.
 %patch1 -p1
 
 %build
-autoconf
+%{__autoconf}
 %configure \
 	--enable-static
 %{__make} host_type=%{_host}
