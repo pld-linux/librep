@@ -10,7 +10,7 @@ Release:	1
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
-Source0:	http://download.sourceforge.net/librep/%{name}-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
 # Source0-md5:	b0f219f9f3d51bc06ebb1bd1861b6e5c
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-no_version.patch
