@@ -6,7 +6,7 @@ Summary(ru):	Встраиваемая среда LISP
 Summary(uk):	Вбудовуване середовище LISP
 Name:		librep
 Version:	0.15.2
-Release:	4
+Release:	5
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
@@ -158,8 +158,6 @@ rm -rf $RPM_BUILD_ROOT
 
 install src/rep_config.h $RPM_BUILD_ROOT%{_includedir}
 
-gzip -9nf NEWS README TODO
-
 %clean
 rm -rf $RPM_BUILD_ROOT
 
@@ -174,6 +172,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc NEWS README TODO
 %attr(755,root,root) %{_bindir}/rep
 %attr(755,root,root) %{_bindir}/rep-remote
 %attr(755,root,root) %{_bindir}/rep-xgettext
@@ -205,6 +204,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libexecdir}/rep/%{_host}
 %dir %{_libexecdir}/rep/%{_host}/rep
 %dir %{_libexecdir}/rep/%{_host}/rep/*
+%dir %{_libexecdir}/rep/%{_host}/rep/io/db
 %{_libexecdir}/rep/%{_host}/DOC
 %attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/*/*.so
 %attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/*/*.la
@@ -213,7 +213,6 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc *.gz
 %attr(755,root,root) %{_bindir}/rep-config
 %attr(755,root,root) %{_libdir}/lib*.so
 %attr(755,root,root) %{_libdir}/lib*.la
