@@ -62,7 +62,7 @@ rm -rf $RPM_BUILD_ROOT
 make install DESTDIR=$RPM_BUILD_ROOT
 
 strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.* \
-	$RPM_BUILD_ROOT%%{_libexecdir}/rep/%{version}/%{_host}/lib*.so
+	$RPM_BUILD_ROOT%{_libexecdir}/rep/%{version}/%{_host}/lib*.so
 
 gzip -9nf $RPM_BUILD_ROOT%{_infodir}/librep* \
 	NEWS README etc/TODO
