@@ -1,14 +1,14 @@
-%define	dsnap	2002-06-11
-%define	snap	%(echo %{dsnap} | sed -e "s#-##g")
+#%define	dsnap	2002-06-11
+#%define	snap	%(echo %{dsnap} | sed -e "s#-##g")
 Summary:	Embeddable Lisp environment
 Summary(pl):	¦rodowisko do zagnie¿d¿ania Lispa
 Name:		librep
-Version:	0.15.2.%{snap}
+Version:	0.16
 Release:	1
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
-Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/librep/%{name}-%{dsnap}.tar.bz2
+Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/librep/%{name}-%{version}.tar.bz2
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-no_version.patch
 URL:		http://librep.sourceforge.net/
@@ -70,7 +70,7 @@ Librep static libraries.
 Biblioteki statyczne librep.
 
 %prep
-%setup -q -n %{name}-%{dsnap}
+%setup -q
 %patch0 -p1
 %patch1 -p1
 
