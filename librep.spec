@@ -163,8 +163,6 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libexecdir}/rep/%{_host}/rep/vm
 %attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/vm/*.so
 %attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/vm/*.la
-%attr(755,root,root) %{_libexecdir}/rep/%{_host}/*.so
-%attr(755,root,root) %{_libexecdir}/rep/%{_host}/*.la
 
 %files devel
 %defattr(644,root,root,755)
