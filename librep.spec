@@ -12,9 +12,10 @@ Source0:	ftp://ftp.gnome.org/pub/gnome/pre-gnome2/sources/librep/%{name}-%{versi
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-no_version.patch
 URL:		http://librep.sourceforge.net/
+Requires:	gmp >= 4.1-3
 BuildRequires:	autoconf >= 2.3-12
 BuildRequires:	gdbm-devel
-BuildRequires:	gmp-devel >= 3.1.1
+BuildRequires:	gmp-devel >= 4.1-3
 BuildRequires:	readline-devel >= 4.2
 BuildRequires:	texinfo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
