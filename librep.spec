@@ -1,7 +1,7 @@
 Summary:	Embeddable Lisp environment
 Name:		librep
-Version:	0.11.3
-Release:	2
+Version:	0.12.2
+Release:	1
 License:	GPL
 Group:		Development/Languages
 Group(pl):	Programowanie/Jêzyki
@@ -68,7 +68,7 @@ strip --strip-unneeded $RPM_BUILD_ROOT%{_libdir}/lib*.so.*.* \
 	$RPM_BUILD_ROOT%{_libexecdir}/rep/%{version}/%{_host}/*.so
 
 gzip -9nf $RPM_BUILD_ROOT%{_infodir}/librep* \
-	NEWS README etc/TODO
+	NEWS README TODO
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -93,9 +93,12 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_datadir}/rep/%{version}
 %dir %{_datadir}/rep/%{version}/lisp
 %{_datadir}/rep/%{version}/lisp/*.jlc
-%{_datadir}/rep/%{version}/DOC
-%{_libexecdir}/rep/%{version}/%{_host}/*.so
-%{_libexecdir}/rep/%{version}/%{_host}/*.la
+%dir %{_libexecdir}/rep
+%dir %{_libexecdir}/rep/%{version}
+%dir %{_libexecdir}/rep/%{version}/%{_host}
+%{_libexecdir}/rep/%{version}/%{_host}/DOC
+%attr(755,root,root) %{_libexecdir}/rep/%{version}/%{_host}/*.so
+%attr(755,root,root) %{_libexecdir}/rep/%{version}/%{_host}/*.la
 
 %files jl
 %defattr(644,root,root,755)
@@ -103,7 +106,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%doc *.gz etc/TODO.gz
+%doc *.gz
 %attr(755,root,root) %{_bindir}/rep-config
 %attr(755,root,root) %{_bindir}/repdoc
 %attr(755,root,root) %{_libdir}/lib*.so
