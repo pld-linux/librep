@@ -1,0 +1,10 @@
+--- librep-0.15.2/configure.in.orig	Wed Sep 25 08:57:53 2002
++++ librep-0.15.2/configure.in	Wed Sep 25 08:57:57 2002
+@@ -548,7 +548,6 @@
+ AC_SUBST(emacssitelispdir)
+ AC_SUBST(HAVE_UNIX)
+ AC_SUBST(HAVE_X11)
+-AC_SUBST(LIBOBJS)
+ 
+ AC_DEFINE_UNQUOTED(rep_VERSION, "${version}")
+ AC_DEFINE_UNQUOTED(rep_INTERFACE, ${libcurrent})
