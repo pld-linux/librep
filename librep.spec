@@ -1,7 +1,7 @@
 Summary:	Embeddable Lisp environment
 Name:		librep
-Version:	0.13.1
-Release:	3
+Version:	0.13.2
+Release:	1
 License:	GPL
 Group:		Development/Languages
 Group(de):	Entwicklung/Sprachen
@@ -25,25 +25,17 @@ Originally inspired by Emacs Lisp, the language dialect combines many
 of the elisp features while trying to remove some of the main
 deficiencies, with features from Common Lisp.
 
-%package jl
-Summary:	*.jl Lisp source files
-Group:		Development/Languages
-Group(de):	Entwicklung/Sprachen
-Group(pl):	Programowanie/Jêzyki
-Requires:	%{name} = %{version}
-
-%description jl
-Lisp source files.
-
 %package devel
 Summary:	librep include files and link libraries
 Group:		Development/Languages
 Group(de):	Entwicklung/Sprachen
 Group(pl):	Programowanie/Jêzyki
 Requires:	%{name} = %{version}
+Obsoletes:	librep-jl
 
 %description devel
-Link libraries and C header files for librep development.
+Link libraries and C header and Lisp source files for librep
+development.
 
 %package static
 Summary:	librep static libraries
@@ -124,13 +116,6 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/*/*.so
 %attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/*/*.la
 
-%files jl
-%defattr(644,root,root,755)
-%{_datadir}/rep/lisp/*.jl
-%{_datadir}/rep/lisp/*/*.jl
-%{_datadir}/rep/lisp/*/*/*.jl
-%{_datadir}/rep/lisp/*/*/*/*.jl
-
 %files devel
 %defattr(644,root,root,755)
 %doc *.gz
@@ -144,6 +129,10 @@ rm -rf $RPM_BUILD_ROOT
 %{_libexecdir}/rep/%{_host}/rules.mk
 %{_aclocaldir}/rep.m4
 %{_infodir}/librep*
+%{_datadir}/rep/lisp/*.jl
+%{_datadir}/rep/lisp/*/*.jl
+%{_datadir}/rep/lisp/*/*/*.jl
+%{_datadir}/rep/lisp/*/*/*/*.jl
 
 %files static
 %defattr(644,root,root,755)
