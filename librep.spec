@@ -1,12 +1,13 @@
 Summary:	Embeddable Lisp environment
 Name:		librep
-Version:	0.12.4
+Version:	0.13
 Release:	1
 License:	GPL
 Group:		Development/Languages
+Group(de):	Entwicklung/Sprachen
 Group(pl):	Programowanie/Jêzyki
 Source0:	ftp://download.sourceforge.net/pub/sourceforge/librep/%{name}-%{version}.tar.gz
-Patch0:		librep-info.patch
+Patch0:		%{name}-info.patch
 URL:		http://www.dcs.warwick.ac.uk/~john/sw/librep.html
 BuildRequires:	gdbm-devel
 BuildRequires:	gmp-devel
@@ -25,6 +26,7 @@ deficiencies, with features from Common Lisp.
 %package jl
 Summary:	*.jl Lisp source files
 Group:		Development/Languages
+Group(de):	Entwicklung/Sprachen
 Group(pl):	Programowanie/Jêzyki
 Requires:	%{name} = %{version}
 
@@ -34,6 +36,7 @@ Lisp source files.
 %package devel
 Summary:	librep include files and link libraries
 Group:		Development/Languages
+Group(de):	Entwicklung/Sprachen
 Group(pl):	Programowanie/Jêzyki
 Requires:	%{name} = %{version}
 
@@ -43,6 +46,7 @@ Link libraries and C header files for librep development.
 %package static
 Summary:	librep static libraries
 Group:		Development/Languages
+Group(de):	Entwicklung/Sprachen
 Group(pl):	Programowanie/Jêzyki
 Requires:	%{name}-devel = %{version}
 
@@ -54,7 +58,6 @@ Librep static libraries.
 %patch -p1
 
 %build
-LDFLAGS="-s"; export LDFLAGS
 %configure \
 	--enable-static
 %{__make}
