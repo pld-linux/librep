@@ -1,0 +1,14 @@
+diff -Nru librep-0.10/man/librep.texi librep-0.10.new/man/librep.texi
+--- librep-0.10/man/librep.texi	Sun Nov 28 17:08:04 1999
++++ librep-0.10.new/man/librep.texi	Fri Jan 21 05:04:32 2000
+@@ -9,8 +9,9 @@
+ @set UPDATE-MONTH November 1999
+ 
+ @ifinfo
++@dircategory Libraries:
+ @direntry
+-* librep: (librep).		A LISP extension language
++* librep: (librep).			A LISP extension language
+ @end direntry
+ 
+ This is Edition @value{EDITION}, last updated @value{UPDATED},
