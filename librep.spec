@@ -138,6 +138,7 @@ rm -rf $RPM_BUILD_ROOT
 %{_datadir}/rep/lisp/*/*.jl
 %{_datadir}/rep/lisp/*/*/*.jl
 %{_datadir}/rep/lisp/*/*/*/*.jl
+%{_datadir}/rep/lisp/*/*/*/*/*.jl
 
 %files static
 %defattr(644,root,root,755)
