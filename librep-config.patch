@@ -1,0 +1,31 @@
+--- librep-0.17/src/rep-config.sh.orig	2001-12-18 04:23:55.000000000 +0000
++++ librep-0.17/src/rep-config.sh	2004-03-14 20:48:36.000000000 +0000
+@@ -1,7 +1,7 @@
+ #!/bin/sh
+ 
+ # load libtool configuration
+-ltconf=/tmp/libtool.conf.$$
++ltconf=./temp-libtool.conf.$$
+ ../libtool --config >$ltconf
+ . $ltconf
+ rm -f $ltconf
+@@ -40,7 +40,7 @@
+       echo "-I${prefix}/include -I${repexecdir}"
+       ;;
+     --libs)
+-      echo "${libpath} -lrep ${LIBS}"
++      echo "-lrep ${LIBS}"
+       ;;
+     --execdir)
+       echo "${repexecdir}"
+--- librep-0.17/src/Makefile.in.orig	2003-07-26 08:35:25.000000000 +0000
++++ librep-0.17/src/Makefile.in	2004-03-14 20:48:52.000000000 +0000
+@@ -127,7 +127,7 @@
+ 
+ rep-config : rep-config.sh Makefile
+ 	$(SHELL) $< "${prefix}" "${libdir}" "${version}" \
+-	  "${LDFLAGS} ${LIBS} ${GMP_LIBS}" "${repcommonexecdir}" \
++	  "${LIBS} ${GMP_LIBS}" "${repcommonexecdir}" \
+ 	  "${repdir}/site-lisp" >$@
+ 	chmod +x $@
+ 
