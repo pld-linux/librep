@@ -6,7 +6,7 @@ Summary(ru):	Встраиваемая среда LISP
 Summary(uk):	Вбудовуване середовище LISP
 Name:		librep
 Version:	0.17
-Release:	3
+Release:	4
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
@@ -23,7 +23,7 @@ BuildRequires:	automake
 BuildRequires:	gdbm-devel
 BuildRequires:	gmp-devel >= 4.1-3
 BuildRequires:	libffi-devel
-BuildRequires:	readline-devel >= 4.2
+BuildRequires:	readline-devel >= 5.0
 BuildRequires:	texinfo
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
