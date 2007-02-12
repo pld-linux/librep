@@ -1,7 +1,7 @@
 # TODO:
 # - compile and include in package rep-debuger.el
 Summary:	Embeddable Lisp environment
-Summary(pl):	¶rodowisko do zagnieødøania Lispa
+Summary(pl.UTF-8):   ≈örodowisko do zagnie≈ºd≈ºania Lispa
 Name:		librep
 Version:	0.16.1
 Release:	1
@@ -32,19 +32,19 @@ Originally inspired by Emacs Lisp, the language dialect combines many
 of the elisp features while trying to remove some of the main
 deficiencies, with features from Common Lisp.
 
-%description -l pl
-To jest niewielkie ∂rodowisko LISP dla uniksa. Zawiera interpreter
-LISP-a, kompilator bytecodu i maszynÍ wirtualn±. Aplikacje mog± uøywaÊ
-interpretera LISP-a jako rozszerzenia jÍzyka lub w oddzielnych
+%description -l pl.UTF-8
+To jest niewielkie ≈õrodowisko LISP dla uniksa. Zawiera interpreter
+LISP-a, kompilator bytecodu i maszynƒô wirtualnƒÖ. Aplikacje mogƒÖ u≈ºywaƒá
+interpretera LISP-a jako rozszerzenia jƒôzyka lub w oddzielnych
 skryptach.
 
-Oryginalnie zainspirowany przez Emacs Lisp, ten dialekt jÍzyka ≥±czy
-wiele cech elispa, prÛbuj±c usun±Ê niektÛre z g≥Ûwnych utrudnieÒ, z
+Oryginalnie zainspirowany przez Emacs Lisp, ten dialekt jƒôzyka ≈ÇƒÖczy
+wiele cech elispa, pr√≥bujƒÖc usunƒÖƒá niekt√≥re z g≈Ç√≥wnych utrudnie≈Ñ, z
 cechami Common Lispa.
 
 %package devel
 Summary:	librep include files and link libraries
-Summary(pl):	Pliki nag≥Ûwkowe do librep
+Summary(pl.UTF-8):   Pliki nag≈Ç√≥wkowe do librep
 Group:		Development/Languages
 Requires:	%{name} = %{version}
 Requires:	gmp-devel >= 3.1.1
@@ -54,20 +54,20 @@ Obsoletes:	librep-jl
 Link libraries and C header and Lisp source files for librep
 development.
 
-%description devel -l pl
-Pliki nag≥Ûwkowe i ºrÛd≥a Lispa do tworzenia programÛw z uøyciem
+%description devel -l pl.UTF-8
+Pliki nag≈Ç√≥wkowe i ≈∫r√≥d≈Ça Lispa do tworzenia program√≥w z u≈ºyciem
 librep.
 
 %package static
 Summary:	librep static libraries
-Summary(pl):	Biblioteki statyczne librep
+Summary(pl.UTF-8):   Biblioteki statyczne librep
 Group:		Development/Languages
 Requires:	%{name}-devel = %{version}
 
 %description static
 Librep static libraries.
 
-%description static -l pl
+%description static -l pl.UTF-8
 Biblioteki statyczne librep.
 
 %prep
