@@ -1,9 +1,9 @@
 Summary:	Embeddable Lisp environment
-Summary(es.UTF-8):   Ambiente LISP que se puede incluir
-Summary(pl.UTF-8):   Środowisko do zagnieżdżania Lispa
-Summary(pt_BR.UTF-8):   Ambiente LISP embutível
-Summary(ru.UTF-8):   Встраиваемая среда LISP
-Summary(uk.UTF-8):   Вбудовуване середовище LISP
+Summary(es.UTF-8):	Ambiente LISP que se puede incluir
+Summary(pl.UTF-8):	Środowisko do zagnieżdżania Lispa
+Summary(pt_BR.UTF-8):	Ambiente LISP embutível
+Summary(ru.UTF-8):	Встраиваемая среда LISP
+Summary(uk.UTF-8):	Вбудовуване середовище LISP
 Name:		librep
 Version:	0.17
 Release:	4
@@ -88,11 +88,11 @@ Librep - це діалект мови LISP для використання вб�
 
 %package devel
 Summary:	librep include files and link libraries
-Summary(es.UTF-8):   Archivos de cabezamiento y bibliotecas para librep
-Summary(pl.UTF-8):   Pliki nagłówkowe do librep
-Summary(pt_BR.UTF-8):   Arquivos de cabeçalho e bibliotecas para o librep
-Summary(ru.UTF-8):   Файлы для разработки программ, использующих librep
-Summary(uk.UTF-8):   Файли для розробки програм з використанням librep
+Summary(es.UTF-8):	Archivos de cabezamiento y bibliotecas para librep
+Summary(pl.UTF-8):	Pliki nagłówkowe do librep
+Summary(pt_BR.UTF-8):	Arquivos de cabeçalho e bibliotecas para o librep
+Summary(ru.UTF-8):	Файлы для разработки программ, использующих librep
+Summary(uk.UTF-8):	Файли для розробки програм з використанням librep
 Group:		Development/Languages
 Requires:	%{name} = %{epoch}:%{version}-%{release}
 Requires:	gmp-devel >= 4.1-3
@@ -124,9 +124,9 @@ com librep.
 
 %package static
 Summary:	librep static libraries
-Summary(pl.UTF-8):   Biblioteki statyczne librep
-Summary(ru.UTF-8):   Статические библиотеки librep
-Summary(uk.UTF-8):   Статичні бібліотеки librep
+Summary(pl.UTF-8):	Biblioteki statyczne librep
+Summary(ru.UTF-8):	Статические библиотеки librep
+Summary(uk.UTF-8):	Статичні бібліотеки librep
 Group:		Development/Languages
 Requires:	%{name}-devel = %{epoch}:%{version}-%{release}
 
