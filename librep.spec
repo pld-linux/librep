@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	Ambiente LISP embutível
 Summary(ru.UTF-8):	Встраиваемая среда LISP
 Summary(uk.UTF-8):	Вбудовуване середовище LISP
 Name:		librep
-Version:	0.17
-Release:	4
+Version:	0.92.0
+Release:	1
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
-Source0:	http://dl.sourceforge.net/%{name}/%{name}-%{version}.tar.gz
-# Source0-md5:	ad4ad851ff9f82a5d61024cd96bc2998
+Source0:	http://download.tuxfamily.org/librep/%{name}-%{version}.tar.xz
+# Source0-md5:	7a79d2c61c76c55a42907f8fc209def6
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-no_version.patch
 Patch2:		%{name}-longdouble.patch
@@ -147,13 +147,15 @@ Librep - це вбудовуваний діалект LISP.
 %prep
 %setup -q
 %patch0 -p1
-%patch1 -p1
-%patch2 -p1
-%patch3 -p1
-%patch4 -p1
+%{__sed} -i "s@\(rep\(common\|\)execdir='[^']*\)@\1/%{_host}@" configure.in
+# %patch1 -p1
+# %patch2 -p1
+# %patch3 -p1
+# %patch4 -p1
 
 %build
 cp -f /usr/share/automake/config.* .
+%{__aclocal}
 %{__autoconf}
 %configure \
 	--enable-static
@@ -170,7 +172,7 @@ rm -rf $RPM_BUILD_ROOT
 
 # remove useless static plugins
 # *.la can be used to load plugins and may contain additional information
-rm -f $RPM_BUILD_ROOT%{_libexecdir}/rep/%{_host}/rep{,/*,/*/*}/*.a
+rm -f $RPM_BUILD_ROOT%{_libexecdir}/{,rep}/%{_host}/{,rep}/{,*{,/*}}/*.a
 
 %clean
 rm -rf $RPM_BUILD_ROOT
@@ -191,7 +193,9 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/rep-remote
 %attr(755,root,root) %{_bindir}/rep-xgettext
 %attr(755,root,root) %{_bindir}/repdoc
+%{_mandir}/man1/rep*.1*
 %attr(755,root,root) %{_libdir}/lib*.so.*.*
+%attr(755,root,root) %{_libdir}/librep.so.*
 %dir %{_datadir}/rep
 %{_datadir}/rep/lisp
 %exclude %{_datadir}/rep/lisp/*.jl
@@ -211,6 +215,7 @@ rm -rf $RPM_BUILD_ROOT
 %dir %{_libexecdir}/rep/%{_host}/rep/lang
 %dir %{_libexecdir}/rep/%{_host}/rep/util
 %dir %{_libexecdir}/rep/%{_host}/rep/vm
+%attr(755,root,root) %{_libexecdir}/rep/%{_host}/*.so
 %attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/*.so
 %{_libexecdir}/rep/%{_host}/rep/*.la
 %attr(755,root,root) %{_libexecdir}/rep/%{_host}/rep/*/*.so
@@ -220,16 +225,15 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_bindir}/rep-config
 %attr(755,root,root) %{_libdir}/lib*.so
 %{_libdir}/lib*.la
-%{_includedir}/*.h
-%{_libexecdir}/rep/%{_host}/rep_config.h
+%dir %{_includedir}/rep
+%{_includedir}/rep/*.h
+%{_pkgconfigdir}/librep.pc
 %attr(755,root,root) %{_libexecdir}/rep/%{_host}/emulate-gnu-tar
 %attr(755,root,root) %{_libexecdir}/rep/%{_host}/libtool
 %attr(755,root,root) %{_libexecdir}/rep/%{_host}/install-aliases
 %{_libexecdir}/rep/%{_host}/rules.mk
-%{_aclocaldir}/rep.m4
 %{_infodir}/librep*
 %{_datadir}/rep/lisp/*.jl
 %{_datadir}/rep/lisp/*/*.jl
