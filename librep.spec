@@ -5,13 +5,13 @@ Summary(pt_BR.UTF-8):	Ambiente LISP embutível
 Summary(ru.UTF-8):	Встраиваемая среда LISP
 Summary(uk.UTF-8):	Вбудовуване середовище LISP
 Name:		librep
-Version:	0.92.0
+Version:	0.92.3
 Release:	1
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
 Source0:	http://download.tuxfamily.org/librep/%{name}-%{version}.tar.xz
-# Source0-md5:	7a79d2c61c76c55a42907f8fc209def6
+# Source0-md5:	c82744fb45022e8a06e488e4a7513558
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-no_version.patch
 Patch2:		%{name}-longdouble.patch
@@ -155,6 +155,7 @@ Librep - це вбудовуваний діалект LISP.
 
 %build
 cp -f /usr/share/automake/config.* .
+%{__libtoolize}
 %{__aclocal}
 %{__autoconf}
 %configure \
@@ -194,8 +195,8 @@ rm -rf $RPM_BUILD_ROOT
 %attr(755,root,root) %{_bindir}/rep-xgettext
 %attr(755,root,root) %{_bindir}/repdoc
 %{_mandir}/man1/rep*.1*
-%attr(755,root,root) %{_libdir}/lib*.so.*.*
-%attr(755,root,root) %{_libdir}/librep.so.*
+%attr(755,root,root) %{_libdir}/librep.so.*.*.*
+%attr(755,root,root) %ghost %{_libdir}/librep.so.16
 %dir %{_datadir}/rep
 %{_datadir}/rep/lisp
 %exclude %{_datadir}/rep/lisp/*.jl
@@ -225,7 +226,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files devel
 %defattr(644,root,root,755)
-%attr(755,root,root) %{_libdir}/lib*.so
+%attr(755,root,root) %{_libdir}/librep.so
 %{_libdir}/lib*.la
 %dir %{_includedir}/rep
 %{_includedir}/rep/*.h
