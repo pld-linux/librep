@@ -6,7 +6,7 @@ Summary(ru.UTF-8):	Встраиваемая среда LISP
 Summary(uk.UTF-8):	Вбудовуване середовище LISP
 Name:		librep
 Version:	0.92.3
-Release:	2
+Release:	3
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
@@ -17,6 +17,7 @@ Patch1:		%{name}-no_version.patch
 Patch2:		%{name}-longdouble.patch
 Patch3:		%{name}-config.patch
 Patch4:		%{name}-am18.patch
+Patch5:		%{name}-dont_inline_fcons.patch
 URL:		http://librep.sourceforge.net/
 BuildRequires:	autoconf >= 2.3-12
 BuildRequires:	automake
@@ -152,6 +153,7 @@ Librep - це вбудовуваний діалект LISP.
 # %patch2 -p1
 # %patch3 -p1
 # %patch4 -p1
+%patch5 -p1
 
 %build
 cp -f /usr/share/automake/config.* .

@@ -1,0 +1,12 @@
+diff -ur librep_0.92.5.orig/src/repint.h librep_0.92.5/src/repint.h
+--- librep_0.92.5.orig/src/repint.h	2015-03-23 19:02:50.000000000 +0200
++++ librep_0.92.5/src/repint.h	2015-06-25 11:19:58.507815822 +0300
+@@ -243,7 +243,7 @@
+ /* If using GCC, make inline_Fcons be Fcons that only takes a procedure
+    call when the heap needs to grow. */
+ 
+-#if defined __GNUC__ && defined __OPTIMIZE__
++#if defined __GNUC__ && defined __OPTIMIZE__ && 0
+ extern __inline__ repv inline_Fcons (repv x, repv y);
+ extern __inline__ repv
+ inline_Fcons (repv x, repv y)
