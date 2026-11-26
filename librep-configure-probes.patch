@@ -1,0 +1,53 @@
+--- librep_0.92.7.orig/configure.ac
++++ librep_0.92.7/configure.ac
+@@ -432,15 +432,18 @@
+ 			   as a pointer. [TYPE=<probed>] (see README)], [],
+  [with_value_type="undef"])
+ if test "${with_value_type}" = "undef"; then
+-  AC_TRY_RUN([main () { exit (!(sizeof (int) >= sizeof (void *)));}],
++  AC_TRY_RUN([#include <stdlib.h>
++	      int main (void) { exit (!(sizeof (int) >= sizeof (void *)));}],
+ 	     [with_value_type=int])
+ fi
+ if test "${with_value_type}" = "undef"; then
+-  AC_TRY_RUN([main () { exit (!(sizeof (long int) >= sizeof (void *)));}],
++  AC_TRY_RUN([#include <stdlib.h>
++	      int main (void) { exit (!(sizeof (long int) >= sizeof (void *)));}],
+ 	     [with_value_type="long int"])
+ fi
+ if test "${with_value_type}" = "undef"; then
+-  AC_TRY_RUN([main () { exit (!(sizeof (long long int) >= sizeof (void *)));}],
++  AC_TRY_RUN([#include <stdlib.h>
++	      int main (void) { exit (!(sizeof (long long int) >= sizeof (void *)));}],
+ 	     [with_value_type="long long int"])
+ fi
+ if test "${with_value_type}" = "undef"; then
+@@ -457,10 +460,11 @@
+ if test "${with_value_sizeof}" = "undef"; then
+   dnl the following fragment is inspired by AC_CHECK_SIZEOF
+   AC_TRY_RUN([#include <stdio.h>
+-	      main () {
++	      #include <stdlib.h>
++	      int main (void) {
+ 		FILE *f = fopen ("conftestval", "w");
+ 		if (!f) exit (1);
+-		fprintf (f, "%d\n", sizeof (${with_value_type}));
++		fprintf (f, "%d\n", (int) sizeof (${with_value_type}));
+ 		exit (0);
+ 	      }],
+ 	      [ with_value_sizeof=`cat conftestval`; rm -f conftestval])
+@@ -548,11 +552,12 @@
+   esac
+ fi
+ if test "${with_stack_direction}" = unknown; then
+-  AC_TRY_RUN([ int level = 1;
++  AC_TRY_RUN([ #include <stdlib.h>
++	       int level = 1;
+ 	       void inner (char *foo) { char bar;
+ 		 if (level) { --level; inner (foo); }
+ 		 exit (!(foo >= &bar)); }
+-	       void main () { char foo; inner (&foo); } ],
++	       int main (void) { char foo; inner (&foo); return 0; } ],
+    [AC_MSG_RESULT([downwards])
+     with_stack_direction=-1],
+    [AC_MSG_RESULT([upwards])

@@ -5,19 +5,19 @@ Summary(pt_BR.UTF-8):	Ambiente LISP embutível
 Summary(ru.UTF-8):	Встраиваемая среда LISP
 Summary(uk.UTF-8):	Вбудовуване середовище LISP
 Name:		librep
-Version:	0.92.3
-Release:	7
+Version:	0.92.7
+Release:	1
 Epoch:		1
 License:	GPL
 Group:		Development/Languages
-Source0:	http://download.tuxfamily.org/librep/%{name}-%{version}.tar.xz
-# Source0-md5:	c82744fb45022e8a06e488e4a7513558
+Source0:	https://download.tuxfamily.org/librep/%{name}_%{version}.tar.xz
+# Source0-md5:	036195b371006848e29ed6f50ddc8475
 Patch0:		%{name}-info.patch
 Patch1:		%{name}-no_version.patch
 Patch2:		%{name}-longdouble.patch
 Patch3:		%{name}-config.patch
 Patch4:		%{name}-am18.patch
-Patch5:		%{name}-dont_inline_fcons.patch
+Patch5:		%{name}-configure-probes.patch
 URL:		http://librep.sourceforge.net/
 BuildRequires:	autoconf >= 2.3-12
 BuildRequires:	automake
@@ -146,9 +146,9 @@ librep. Librep - это встраиваемый диалект LISP.
 Librep - це вбудовуваний діалект LISP.
 
 %prep
-%setup -q
+%setup -q -n %{name}_%{version}
 %patch -P0 -p1
-%{__sed} -i "s@\(rep\(common\|\)execdir='[^']*\)@\1/%{_host}@" configure.in
+%{__sed} -i "s@\(rep\(common\|\)execdir='[^']*\)@\1/%{_host}@" configure.ac
 # %%patch1 -p1
 # %%patch2 -p1
 # %%patch3 -p1
@@ -160,7 +160,9 @@ cp -f /usr/share/automake/config.* .
 %{__libtoolize}
 %{__aclocal}
 %{__autoconf}
+# K&R style function pointer declarations, C23 treats () as (void)
 %configure \
+	CFLAGS="%{rpmcflags} -std=gnu17" \
 	--enable-static
 %{__make} \
 	host_type=%{_host}
@@ -172,6 +174,8 @@ rm -rf $RPM_BUILD_ROOT
 	DESTDIR=$RPM_BUILD_ROOT \
 	aclocaldir=%{_aclocaldir} \
 	host_type=%{_host}
+
+rm -f $RPM_BUILD_ROOT%{_infodir}/dir
 
 # remove useless static plugins
 # *.la can be used to load plugins and may contain additional information
